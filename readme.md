@@ -11,6 +11,9 @@ https://github.com/nrf-rs/nrf-hal
 There is a problem, though: there seems to be a version conflict between the dependencies, so in order to make it work I made a custom local fork of the HAL crate,
 downgrading the nb dependency to from 1.0.0 to 0.1.2 (compatible with the one used in embedded-hal). In order to use this code one must edit the `Cargo.toml` accordingly.
 
+#### TO DO: 
+Add random choice of the hue, activated by clicking the encoder's switch.
+
 ### HOW TO FLASH:
 
 * build the code: ```cargo build --release```
