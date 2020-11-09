@@ -8,11 +8,10 @@ __NOTE__: In order to use the qed module, it's necessary at the moment (November
 
 https://github.com/nrf-rs/nrf-hal
 
-There is a problem, though: there seems to be a version conflict between the dependencies, so in order to make it work I made a custom local fork of the HAL crate,
-downgrading the nb dependency to from 1.0.0 to 0.1.2 (compatible with the one used in embedded-hal). In order to use this code one must edit the `Cargo.toml` accordingly.
+Run `cargo update` should there be a conflict of `nb` versions.
 
 #### TO DO: 
-Add random choice of the hue, activated by clicking the encoder's switch.
+Add random choice of the hue, activated by clicking the encoder's switch. As there would be two separate events to keep track of: encoder signal and switch signal, do it with RTIC or with IRQs.
 
 ### HOW TO FLASH:
 

@@ -9,8 +9,7 @@ edition = "2018"
 [dependencies]
 cortex-m = "0.6.2"
 cortex-m-rt = "0.6.12"
-#nrf52840-hal = {git = "https://github.com/nrf-rs/nrf-hal", branch = "master", features = ["rt"]}
-nrf52840-hal = {path = "../GHMASTER/nrf-hal/nrf52840-hal", features = ["rt"]}
+nrf52840-hal = {git = "https://github.com/nrf-rs/nrf-hal", branch = "master", features = ["rt"]}
 panic-halt = "~0.2"
 
 smart-leds = "0.3"
@@ -18,5 +17,5 @@ smart-leds-trait = "0.2"
 apa102-spi = "0.3"
 
 [dependencies.embedded-hal]
-version = "0.2.3"
+version = "*"
 features = ["unproven"]

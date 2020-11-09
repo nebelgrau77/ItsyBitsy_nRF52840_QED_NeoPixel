@@ -23,7 +23,6 @@ use smart_leds::{
     SmartLedsWrite,
     };
 
-
 #[entry]
 fn main() -> ! {
     
@@ -38,7 +37,7 @@ fn main() -> ! {
     let pin_a = port0.p0_30.into_pullup_input().degrade(); // A1 on ItsyBitsy
     let pin_b = port0.p0_28.into_pullup_input().degrade(); // A2 on ItsyBitsy
 
-    let mut qed = Qdec::new(p.QDEC, pin_a, pin_b, None, SamplePeriod::_128us);
+    let qed = Qdec::new(p.QDEC, pin_a, pin_b, None, SamplePeriod::_128us);
     qed.debounce(true).enable_interrupt(NumSamples::_10smpl).enable();
 
     // set up pins for the NeoPixel 
@@ -67,19 +66,8 @@ fn main() -> ! {
     // set up the NeoPixel
     let mut dotstar = Apa102::new(spi);
     
-
-    // HERE I MUST READ THE ENCODER VALUE, LIKE THIS:
-    // let mut val: i16 = 0; 
-    // val += qed.read();
-    // AND INCREASE SOMETHING ACCORDINGLY
-    // E.G. HUE: 
-    // let color: [RGB8; 1] = [hsv2rgb(Hsv {hue: h, sat: 255,val: 16})];
-    // dotstar.write(color.iter().cloned()).unwrap();
-
+    let mut color: [RGB8; 1] = [hsv2rgb(Hsv {hue: 0, sat: 255, val: 16})]; // some default color to start with
     let mut qed_val: i16 = 0;
-    let mut color: [RGB8; 1] = [hsv2rgb(Hsv {hue: 0, sat: 255, val: 16})];
-    
-    // PROBLEM: QED readings must be signed integers, but the hue value must be u8. It must wrap to 0 or 255.
 
     loop {
         
